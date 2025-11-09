@@ -98,23 +98,16 @@ public class PuzzleEx extends JFrame {
 
     private void initUI() {
 
-        solution = new ArrayList<>();
-
-        solution.add(new Point(0, 0));
-        solution.add(new Point(0, 1));
-        solution.add(new Point(0, 2));
-        solution.add(new Point(1, 0));
-        solution.add(new Point(1, 1));
-        solution.add(new Point(1, 2));
-        solution.add(new Point(2, 0));
-        solution.add(new Point(2, 1));
-        solution.add(new Point(2, 2));
-        solution.add(new Point(3, 0));
-        solution.add(new Point(3, 1));
-        solution.add(new Point(3, 2));
-
-        buttons = new ArrayList<>();
-
+        solution = new ArrayList<Point>();
+        buttons = new ArrayList<MyButton>();
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                Point p = new Point(i, j);
+       
+        solution.add(p);
+        }
+    }
+        
         panel = new JPanel();
         panel.setBorder(BorderFactory.createLineBorder(Color.gray));
         panel.setLayout(new GridLayout(4, 3, 0, 0));
