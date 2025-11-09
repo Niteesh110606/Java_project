@@ -48,10 +48,9 @@ class MyButton extends JButton {
     private void initUI() {
 
         isLastButton = false;
-        BorderFactory.createLineBorder(Color.gray);
-
+        setBorder(BorderFactory.createLineBorder(Color.gray));
         addMouseListener(new MouseAdapter() {
-
+            
             @Override
             public void mouseEntered(MouseEvent e) {
                 setBorder(BorderFactory.createLineBorder(Color.yellow));
@@ -82,7 +81,8 @@ public class PuzzleEx extends JFrame {
     private BufferedImage resized;
     private Image image;
     private MyButton lastButton;
-    private int width, height;
+    private int width;
+    private int height;
 
     private List<MyButton> buttons;
     private List<Point> solution;
