@@ -91,6 +91,13 @@ public class PuzzleEx extends JFrame {
     private final int COLS = 3;
     private final int NUMBER_OF_BUTTONS = ROWS * COLS;
     private final int DESIRED_WIDTH = 500;
+    private Timer timer;
+    private int elapsedTime = 0;
+    private boolean isPaused = false;
+    private JButton pauseButton;
+    private JButton resetButton;
+    private JButton chooseImageButton;
+    private JButton timeLabel;
     public PuzzleEx() {
 
         initUI();
@@ -110,7 +117,8 @@ public class PuzzleEx extends JFrame {
         
         panel = new JPanel();
         panel.setBorder(BorderFactory.createLineBorder(Color.gray));
-        panel.setLayout(new GridLayout(4, 3, 0, 0));
+        GridLayout gridLayout = new GridLayout(ROWS, COLS, 0, 0);
+        panel.setLayout(gridLayout);
 
         try {
             source = loadImage();
