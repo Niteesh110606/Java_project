@@ -6,6 +6,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -156,6 +157,43 @@ public class PuzzleEx extends JFrame {
                     elapsedTime = elapsedTime + 1;
                     String text = "Time: " + elapsedTime + "s";
                     timeLabel.setText(text);
+                }
+            }
+        });
+        timer.start();
+        createButtons();
+        pack();
+        pauseButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (isPaused) {
+                    isPaused = false;
+                    pauseButton.setText("Pause");
+                } else {
+                    isPaused = true;
+                    pauseButton.setText("Resume");
+                }
+            }
+        });
+        resetButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                resetPuzzle();
+            }
+        });
+        chooseImageButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                int result = fileChooser.showOpenDialog(PuzzleEx.this);
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = fileChooser.getSelectedFile();
+                    try {
+                        source = ImageIO.read(selectedFile);
+                        int newHeight = getNewHeight(source.getWidth(), source.getHeight());
+                        resized = resizeImage(source, DESIRED_WIDTH, newHeight, BufferedImage.TYPE_INT_ARGB);
+                        resetPuzzle();
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(PuzzleEx.this, "Could not load image", "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         });
