@@ -84,10 +84,8 @@ public class PuzzleEx extends JFrame {
     private MyButton lastButton;
     private int width;
     private int height;
-
     private List<MyButton> buttons;
     private List<Point> solution;
-
     private final int ROWS = 4;
     private final int COLS = 3;
     private final int DESIRED_WIDTH = 500;
