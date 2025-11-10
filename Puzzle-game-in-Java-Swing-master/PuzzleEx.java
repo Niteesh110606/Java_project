@@ -122,9 +122,11 @@ public class PuzzleEx extends JFrame {
 
         try {
             source = loadImage();
-            int h = getNewHeight(source.getWidth(), source.getHeight());
-            resized = resizeImage(source, DESIRED_WIDTH, h,
-                    BufferedImage.TYPE_INT_ARGB);
+            int originalWidth = source.getWidth();
+            int originalHeight = source.getHeight();
+            int newHeight = getNewHeight(originalWidth, originalHeight);
+            resized = resizeImage(source, DESIRED_WIDTH, newHeight, BufferedImage.TYPE_INT_ARGB);
+
 
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Could not load image", "Error",
