@@ -129,8 +129,7 @@ public class PuzzleEx extends JFrame {
 
 
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "Could not load image", "Error",
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Could not load image", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
         width = resized.getWidth(null);
@@ -138,15 +137,28 @@ public class PuzzleEx extends JFrame {
 
         add(panel, BorderLayout.CENTER);
 
-        for (int i = 0; i < 4; i++) {
-
-            for (int j = 0; j < 3; j++) {
-
-                image = createImage(new FilteredImageSource(resized.getSource(),
-                        new CropImageFilter(j * width / 3, i * height / 4,
-                                (width / 3), height / 4)));
-
-                var button = new MyButton(image);
+        JPanel topPanel = new JPanel(new BorderLayout());
+        timeLabel = new JButton("Time: 0s");
+        timeLabel.setEnabled(false);
+        topPanel.add(timeLabel, BorderLayout.CENTER);
+        pauseButton = new JButton("Pause");
+        resetButton = new JButton("Reset");
+        chooseImageButton = new JButton("Choose Image");
+        JPanel controlPanel = new JPanel();
+        controlPanel.add(chooseImageButton);
+        controlPanel.add(resetButton);
+        controlPanel.add(pauseButton);
+        topPanel.add(controlPanel, BorderLayout.EAST);
+        add(topPanel, BorderLayout.NORTH);
+        timer = new Timer(1000, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (!isPaused) {
+                    elapsedTime = elapsedTime + 1;
+                    String text = "Time: " + elapsedTime + "s";
+                    timeLabel.setText(text);
+                }
+            }
+        });
                 button.putClientProperty("position", new Point(i, j));
 
                 if (i == 3 && j == 2) {
