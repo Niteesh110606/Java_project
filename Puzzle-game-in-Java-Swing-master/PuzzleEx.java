@@ -197,6 +197,12 @@ public class PuzzleEx extends JFrame {
                 }
             }
         });
+        setTitle("Puzzle Game");
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+    }
+
                 button.putClientProperty("position", new Point(i, j));
 
                 if (i == 3 && j == 2) {
@@ -225,12 +231,6 @@ public class PuzzleEx extends JFrame {
         }
 
         pack();
-
-        setTitle("Puzzle");
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-    }
 
     private int getNewHeight(int w, int h) {
 
