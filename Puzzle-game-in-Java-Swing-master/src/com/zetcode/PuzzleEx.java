@@ -90,7 +90,6 @@ public class PuzzleEx extends JFrame {
 
     private final int ROWS = 4;
     private final int COLS = 3;
-    private final int NUMBER_OF_BUTTONS = ROWS * COLS;
     private final int DESIRED_WIDTH = 500;
     private Timer timer;
     private int elapsedTime = 0;
@@ -126,6 +125,11 @@ public class PuzzleEx extends JFrame {
             int originalWidth = source.getWidth();
             int originalHeight = source.getHeight();
             int newHeight = getNewHeight(originalWidth, originalHeight);
+            width = resized.getWidth(null);
+            height = resized.getHeight(null);
+            width = width - (width % COLS);
+            height = height - (height % ROWS);
+            resized = resized.getSubimage(0, 0, width, height); 
             resized = resizeImage(source, DESIRED_WIDTH, newHeight, BufferedImage.TYPE_INT_ARGB);
 
 
