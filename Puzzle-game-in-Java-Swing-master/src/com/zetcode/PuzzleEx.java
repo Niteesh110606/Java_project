@@ -347,9 +347,11 @@ public class PuzzleEx extends JFrame {
         }
     }
 
-    public static boolean compareList(List ls1, List ls2) {
-
-        return ls1.toString().contentEquals(ls2.toString());
+    public static boolean compareList(List first, List second) {
+        String firstString = first.toString();
+        String secondString = second.toString();
+        boolean equal = firstString.contentEquals(secondString);
+        return equal;
     }
 
     public static void main(String[] args) {
