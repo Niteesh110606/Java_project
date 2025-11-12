@@ -339,9 +339,11 @@ public class PuzzleEx extends JFrame {
             current.add(p);
         }
 
-        if (compareList(solution, current)) {
-            JOptionPane.showMessageDialog(panel, "Finished",
-                    "Congratulation", JOptionPane.INFORMATION_MESSAGE);
+         boolean solved = compareList(solution, current);
+        if (solved) {
+            timer.stop();
+            String message = "🎉 Finished in " + elapsedTime + " seconds!";
+            JOptionPane.showMessageDialog(panel, message, "Congratulations", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
