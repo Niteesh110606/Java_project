@@ -210,6 +210,34 @@ public class PuzzleEx extends JFrame {
             g.dispose();
             return resizedImage;
     }
+
+    private void createButtons() {
+        buttons.clear();
+        panel.removeAll();
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                int x = j * width / COLS;
+                int y = i * height / ROWS;
+                int tileWidth;
+                int tileHeight;
+                if (j == COLS - 1) {
+                    tileWidth = width - x;
+                } else {
+                    tileWidth = width / COLS;
+                }
+                if (i == ROWS - 1) {
+                    tileHeight = height - y;
+                } else {
+                    tileHeight = height / ROWS;
+                }
+
+                image = createImage(new FilteredImageSource(
+                        resized.getSource(),
+                        new CropImageFilter(x, y, tileWidth, tileHeight)));
+                MyButton button = new MyButton(image);
+                Point point = new Point(i, j);
+                button.putClientProperty("position", point);
+
     private class ClickAction extends AbstractAction {
 
         @Override
