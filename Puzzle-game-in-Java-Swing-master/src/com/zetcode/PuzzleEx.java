@@ -318,12 +318,13 @@ public class PuzzleEx extends JFrame {
 
             panel.removeAll();
 
-            for (JComponent btn : buttons) {
-
-                panel.add(btn);
+            for (int i = 0; i < buttons.size(); i++) {
+                JComponent b = buttons.get(i);
+                panel.add(b);
             }
 
             panel.validate();
+            panel.repaint();
         }
     }
 
