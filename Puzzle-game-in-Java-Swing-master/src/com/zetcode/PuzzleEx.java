@@ -356,10 +356,11 @@ public class PuzzleEx extends JFrame {
 
     public static void main(String[] args) {
 
-        EventQueue.invokeLater(() -> {
-
-            var puzzle = new PuzzleEx();
-            puzzle.setVisible(true);
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                PuzzleEx puzzle = new PuzzleEx();
+                puzzle.setVisible(true);
+            }
         });
     }
 }
