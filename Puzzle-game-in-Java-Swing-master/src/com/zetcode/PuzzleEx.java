@@ -190,60 +190,26 @@ public class PuzzleEx extends JFrame {
         setLocationRelativeTo(null);
     }
 
-                button.putClientProperty("position", new Point(i, j));
-
-                if (i == 3 && j == 2) {
-
-                    lastButton = new MyButton();
-                    lastButton.setBorderPainted(false);
-                    lastButton.setContentAreaFilled(false);
-                    lastButton.setLastButton();
-                    lastButton.putClientProperty("position", new Point(i, j));
-                } else {
-
-                    buttons.add(button);
-                }
-            }
-        }
-
-        Collections.shuffle(buttons);
-        buttons.add(lastButton);
-
-        for (int i = 0; i < NUMBER_OF_BUTTONS; i++) {
-
-            var btn = buttons.get(i);
-            panel.add(btn);
-            btn.setBorder(BorderFactory.createLineBorder(Color.gray));
-            btn.addActionListener(new ClickAction());
-        }
-
-        pack();
-
-    private int getNewHeight(int w, int h) {
-
+        private int getNewHeight(int w, int h) {
         double ratio = DESIRED_WIDTH / (double) w;
-        int newHeight = (int) (h * ratio);
+        double heightDouble = h * ratio;
+        int newHeight = (int) heightDouble;
         return newHeight;
     }
 
-    private BufferedImage loadImage() throws IOException {
-
-        var bimg = ImageIO.read(new File("src/resources/icesid.jpg"));
-
-        return bimg;
+        private BufferedImage loadImage() throws IOException {
+            File file = new File("src/resources/icesid.jpg");
+            BufferedImage image = ImageIO.read(file);
+            return image;
     }
 
-    private BufferedImage resizeImage(BufferedImage originalImage, int width,
-                                      int height, int type) {
-
-        var resizedImage = new BufferedImage(width, height, type);
-        var g = resizedImage.createGraphics();
-        g.drawImage(originalImage, 0, 0, width, height, null);
-        g.dispose();
-
-        return resizedImage;
+        private BufferedImage resizeImage(BufferedImage originalImage, int width, int height, int type) {
+            BufferedImage resizedImage = new BufferedImage(width, height, type);
+            Graphics2D g = resizedImage.createGraphics();
+            g.drawImage(originalImage, 0, 0, width, height, null);
+            g.dispose();
+            return resizedImage;
     }
-
     private class ClickAction extends AbstractAction {
 
         @Override
