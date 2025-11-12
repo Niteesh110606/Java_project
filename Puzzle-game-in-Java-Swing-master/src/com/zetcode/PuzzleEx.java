@@ -108,11 +108,6 @@ public class PuzzleEx extends JFrame {
             int originalWidth = source.getWidth();
             int originalHeight = source.getHeight();
             int newHeight = getNewHeight(originalWidth, originalHeight);
-            width = resized.getWidth(null);
-            height = resized.getHeight(null);
-            width = width - (width % COLS);
-            height = height - (height % ROWS);
-            resized = resized.getSubimage(0, 0, width, height); 
             resized = resizeImage(source, DESIRED_WIDTH, newHeight, BufferedImage.TYPE_INT_ARGB);
 
 
@@ -262,7 +257,7 @@ public class PuzzleEx extends JFrame {
         panel.validate();
         panel.repaint();
         pack();
-        
+    }
     private void resetPuzzle() {
         elapsedTime = 0;
         String resetText = "Time: 0s";
@@ -270,10 +265,10 @@ public class PuzzleEx extends JFrame {
         isPaused = false;
         pauseButton.setText("Pause");
         createButtons();
-        
+    }   
     private class ClickAction extends AbstractAction {
 
-        @Override
+        
         public void actionPerformed(ActionEvent e) {
             if (isPaused) {
                 return;
