@@ -332,8 +332,11 @@ public class PuzzleEx extends JFrame {
 
         var current = new ArrayList<Point>();
 
-        for (JComponent btn : buttons) {
-            current.add((Point) btn.getClientProperty("position"));
+        ArrayList<Point> current = new ArrayList<Point>();
+        for (int i = 0; i < buttons.size(); i++) {
+            JComponent b = buttons.get(i);
+            Point p = (Point) b.getClientProperty("position");
+            current.add(p);
         }
 
         if (compareList(solution, current)) {
