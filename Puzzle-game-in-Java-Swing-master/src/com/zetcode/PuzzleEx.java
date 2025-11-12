@@ -275,18 +275,21 @@ public class PuzzleEx extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            if (isPaused) {
+                return;
+            }
             checkButton(e);
             checkSolution();
         }
 
         private void checkButton(ActionEvent e) {
 
-            int lidx = 0;
+            int lastIndex = 0;
 
-            for (MyButton button : buttons) {
-                if (button.isLastButton()) {
-                    lidx = buttons.indexOf(button);
+            for (int i = 0; i < buttons.size(); i++) {
+                MyButton b = buttons.get(i);
+                if (b.isLastButton()) {
+                    lastIndex = i;
                 }
             }
 
