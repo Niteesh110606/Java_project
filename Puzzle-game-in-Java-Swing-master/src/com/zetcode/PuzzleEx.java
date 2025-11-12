@@ -238,6 +238,32 @@ public class PuzzleEx extends JFrame {
                 Point point = new Point(i, j);
                 button.putClientProperty("position", point);
 
+
+                if (i == ROWS - 1 && j == COLS - 1) {
+                    lastButton = new MyButton();
+                    lastButton.setBorderPainted(false);
+                    lastButton.setContentAreaFilled(false);
+                    lastButton.setLastButton();
+                    Point pos = new Point(i, j);
+                    lastButton.putClientProperty("position", pos);
+                } else {
+                    buttons.add(button);
+                }
+            }
+        }
+        Collections.shuffle(buttons);
+        buttons.add(lastButton);
+        for (int i = 0; i < NUMBER_OF_BUTTONS; i++) {
+            MyButton btn = buttons.get(i);
+            panel.add(btn);
+            btn.setBorder(BorderFactory.createLineBorder(Color.gray));
+            btn.addActionListener(new ClickAction());
+        }
+        panel.validate();
+        panel.repaint();
+        pack();
+
+        
     private class ClickAction extends AbstractAction {
 
         @Override
