@@ -262,7 +262,14 @@ public class PuzzleEx extends JFrame {
         panel.validate();
         panel.repaint();
         pack();
-
+        
+    private void resetPuzzle() {
+        elapsedTime = 0;
+        String resetText = "Time: 0s";
+        timeLabel.setText(resetText);
+        isPaused = false;
+        pauseButton.setText("Pause");
+        createButtons();
         
     private class ClickAction extends AbstractAction {
 
