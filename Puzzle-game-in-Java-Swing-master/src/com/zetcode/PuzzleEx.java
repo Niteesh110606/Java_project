@@ -293,12 +293,23 @@ public class PuzzleEx extends JFrame {
                 }
             }
 
-            var button = (JButton) e.getSource();
-            int bidx = buttons.indexOf(button);
-
-            if ((bidx - 1 == lidx) || (bidx + 1 == lidx)
-                    || (bidx - 3 == lidx) || (bidx + 3 == lidx)) {
-                Collections.swap(buttons, bidx, lidx);
+            JButton clicked = (JButton) e.getSource();
+            int clickedIndex = buttons.indexOf(clicked);
+            boolean canSwap = false;
+            if (clickedIndex - 1 == lastIndex) {
+                canSwap = true;
+            }
+            if (clickedIndex + 1 == lastIndex) {
+                canSwap = true;
+            }
+            if (clickedIndex - COLS == lastIndex) {
+                canSwap = true;
+            }
+            if (clickedIndex + COLS == lastIndex) {
+                canSwap = true;
+            }
+            if (canSwap) {
+                Collections.swap(buttons, clickedIndex, lastIndex);
                 updateButtons();
             }
         }
