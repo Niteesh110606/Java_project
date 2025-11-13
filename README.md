@@ -1,4 +1,4 @@
-# Sliding Puzzle Game - Challenge Your Mind! 🧩
+# Sliding Puzzle Game - Challenge Your Mind! 
 
 - A Java Swing-based sliding puzzle game where players rearrange image tiles to solve the puzzle.
 - Features customizable images, timing, pause/resume functionality, and reset options.
@@ -25,7 +25,7 @@
 
 ---
 
-## 🛠️ Built With
+##  Built With
 
 - **Java SE** (Swing for GUI)
 - **Java ImageIO and AWT** (for image processing)
